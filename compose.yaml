@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "${APP_PORT:-8080}:4242"
+    environment:
+      - PORT=4242
+      - GREETING=${GREETING:-composite armor}
+      - STORAGE=sqlite
+      - DATA_FILE=/data/counter.db
+    volumes:
+      - counter_data:/data
+
+volumes:
+  counter_data:
